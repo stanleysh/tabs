@@ -1,14 +1,14 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
+const cors = require('cors');
 
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.listen(port, function() {
-	console.log(`Express app running on port ${port}`)
-});
+app.use(cors());
 
 app.use(bodyParser.json())
 app.use(
@@ -16,6 +16,16 @@ app.use(
     extended: true,
   })
 )
+
+app.use('/api/tabs', (request, response) => {
+    response.json({info: 'Node.js,, Express, and Postgres API'})
+})
+
+app.use('/api/users', require('./routes/api/users'));
+
+app.listen(port, function() {
+	console.log(`Express app running on port ${port}`)
+});
 
 app.use(logger('dev'));
 app.use(express.json());
