@@ -1,0 +1,76 @@
+.App-header {
+  font-size: 20px;
+  background-color: #17a2b8;
+  color: white;
+  display: grid;
+  grid-template-columns: 55% 1fr 1fr;
+}
+  
+.Logo {
+  justify-self: start;
+  margin: 10px 10px 3px 10px;
+  align-self: center;
+}
+
+.name {
+  float: left;
+  align-content: center;
+  margin-right: 10px;
+  align-self: center;
+  margin-top: 6px;
+}
+
+.nav-buttons {
+  font-size: 12px;
+  float: left;
+  align-self: center;
+}
+
+.about-info {
+  justify-self: end;
+  align-self: center;
+}
+
+.account-info {
+  justify-self: end;
+  margin-right: 20px;
+  align-self: center;
+}
+
+.logo-holder {
+  text-decoration: none;
+  color: white;
+}
+
+.logo-holder:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.dropdown-item {
+  font-size: 12px;
+}
+
+@media only screen and (min-width: 600px) {
+  .App-header {
+    grid-template-columns: 70% 1fr 1fr;
+    font-size: 22px;
+  }
+
+  .nav-buttons {
+    font-size: 13px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .App-header {
+    grid-template-columns: 77% 1fr 1fr;
+    font-size: 25px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .App-header {
+    grid-template-columns: 80% 1fr 1fr
+  }
+}
