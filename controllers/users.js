@@ -42,12 +42,24 @@ const createUser = (req, res) => {
 
 async function login(req, res) {
     try {
-        pool.query('SELECT * FROM users WHERE email = $1')
+        pool.query('SELECT * FROM users WHERE email = $1', [req.body.email], (error, user) => {
+            comparePassword(user, req.body.pw, (err, isMatch) => {
+                if (isMatch) {
+                    const token = createJWT(user);
+                    console.log(token)
+                    res.json({token});
+
+                } else {
+                    return res.status(401).json({err: "Bad credentials"});
+                }
+            })
+        })
+    } catch (err) {
+        return res.status(401).json(err);
     }
 }
 
-
-
+// Login and authentication functions for controllers
 function createJWT(user) {
     var id = user.id;
     return jwt.sign(
@@ -56,10 +68,17 @@ function createJWT(user) {
       {expiresIn: '24h'}
     );
   }
+  
+function comparePassword(user, tryPassword, cb)  {
+    bcrypt.compare(tryPassword, user.rows[0].pw, function (err, isMatch) {
+        if (err) return cb(err);
+        cb(null, isMatch);
+    });
+};
 
 module.exports = {
     getUsers,
     getUserById,
     createUser,
-    signIn
+    login
 }

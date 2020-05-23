@@ -6,7 +6,7 @@ const passport = require('passport');
 router.get('/', usersCtrl.getUsers);
 router.get('/:id', usersCtrl.getUserById);
 router.post('/signup', usersCtrl.createUser);
-// router.post('/sign-in', requireSignIn, usersCtrl.signIn);
+router.post('/login', usersCtrl.login);
 
 const requireSignIn = passport.authenticate('local', {session: false})
 
