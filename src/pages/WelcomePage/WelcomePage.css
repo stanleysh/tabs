@@ -1,0 +1,185 @@
+.welcome-bar {
+    margin: 0px auto;
+    display: inline-grid;
+    grid-template-columns: 1fr 40%;
+    text-align: center;
+    grid-gap: 15px;
+}
+
+.welcome-banner {
+    background-color: #b6f0fe;
+    font-size: 2rem;
+    color: #58757d;
+    padding: 20px 30px;
+    line-height: 2rem;
+    text-align: left;
+    font-weight: bolder;
+}
+
+.welcome-message {
+    font-size: 12px;
+    max-width: 70%;
+    text-align: left;
+    padding: 0 auto 0 20px;
+    background-color: #b6f0fe;
+    margin: 50px auto 25px auto;
+    border-radius: 10px;
+    padding: 10px 15px;
+    position: relative;
+}
+
+.welcome-message:after {
+    content: '';
+    position: absolute;
+    top: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 42px solid transparent;
+	border-bottom-color: #b6f0fe;
+	border-top: 0;
+	border-right: 0;
+	margin-left: 41px;
+	margin-top: -42px;
+}
+
+.welcome-bar-logged-in {
+    margin-top: 30px;
+    display: inline-grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 210px 1fr;
+    justify-items: center;
+    grid-gap: 15px;
+}
+
+.welcomeLogo {
+    margin: auto;
+    margin-top: 125px;
+    font: Montserrat,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 8rem;
+    font-weight: 700;
+    color:#17a2b8;
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-column-end: 4;
+
+}
+
+.welcome-btn {
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+    font-size: 15px;
+    justify-self: center;
+    color: white;
+    background-color: #17a2b8;
+    border-radius: 30px;
+    padding: 5px 15px;
+    border-color: #17a2b8;
+    margin-bottom: 20px;
+}
+
+.welcome-btn:hover {
+    background-color: #58757d;
+    border-color: #58757d;    
+}
+
+.fade-in-1 {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 1s;
+}
+
+.fade-in-2 {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 2s;
+}
+
+.fade-in-3 {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 3s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@media only screen and (min-width: 600px) {
+    .welcome-banner {
+        font-size: 4rem;
+        line-height: 5rem;
+    }
+
+    .welcome-message {
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    .welcome-bar {
+        grid-gap: 15px;
+    }
+
+    .welcome-btn {
+        font-size: 18px;
+    }
+
+}
+
+@media only screen and (min-width: 768px) {
+    .welcome-banner {
+        font-size: 6rem;
+        line-height: 6rem;
+        padding: 40px 50px;
+
+    }
+
+    .welcome-message {
+        font-size: 20px;
+        padding: 10px 15px;
+        max-width: 50%;
+    }
+
+    .welcome-bar {
+        grid-gap: 15px;
+    }
+
+    .welcome-btn {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .welcome-banner {
+        font-size: 8rem;
+        line-height: 8rem;
+        padding: 40px 5%;
+    }
+
+    .welcome-message {
+        font-size: 25px;
+        padding: 10px 15px;
+        max-width: 40%;
+        margin-right: 40%;
+    }
+
+    .welcome-bar {
+        grid-gap: 10px;
+        position: absolute;
+        top: 105%;
+        left: 20%;
+    }
+}
