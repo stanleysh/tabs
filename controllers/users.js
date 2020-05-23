@@ -1,6 +1,7 @@
 const { pool } = require('../config/config');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const SECRET = process.env.SECRET;
 
 const SALT_ROUNDS = 12 
 
@@ -19,30 +20,42 @@ const getUserById = (req, res) => {
         if (error) {
             res.status(400).json(error)
         }
+        console.log(results)
         res.status(200).json(results.rows)
     })
 }
 
 const createUser = (req, res) => {
-    bcrypt.hash(req.body.pw, SALT_ROUNDS, function (err, hash) {
-        if (err) return next(err);
-        pool.query('INSERT INTO users (name, email, pw) VALUES ($1, $2, $3) RETURNING *', [req.body.name, req.body.email, hash], (error, results) => {
+    bcrypt.hash(req.body.pw, SALT_ROUNDS)
+    .then((hash) => {
+        pool.query('INSERT INTO users (name, email, pw) VALUES ($1, $2, $3) RETURNING *', [req.body.name, req.body.email, hash], (error, newUser) => {
             if (error) {
-                res.status(400).json(error)
+                console.log(error)
             }
-            res.status(200).json(results.rows)
+            res.json({token: createJWT(newUser)})
         })
+    }) 
+    .catch((err) => {
+        return res.status(401).json(err)
     })
 }
 
-const signIn = (req, res, next) => {
-    res.send({ token: tokenForUser(req.user) })
+async function login(req, res) {
+    try {
+        pool.query('SELECT * FROM users WHERE email = $1')
+    }
 }
 
-const tokenForUser = (user) => {
-    const timestamp = new Date().getTime()
-    return jwt.enconde({sub: user.id, iat: timestamp}, config.secret)
-}
+
+
+function createJWT(user) {
+    var id = user.id;
+    return jwt.sign(
+      {id},
+      SECRET,
+      {expiresIn: '24h'}
+    );
+  }
 
 module.exports = {
     getUsers,
