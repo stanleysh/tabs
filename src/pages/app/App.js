@@ -5,6 +5,7 @@ import userService from '../../utils/userService';
 import NavBar from '../../components/NavBar/NavBar';
 import WelcomePage from '../WelcomePage/WelcomePage';
 import SignupPage from '../SignupPage/SignupPage';
+import LoginPage from '../LoginPage/LoginPage';
 
 class App extends Component {
   constructor() {
@@ -28,7 +29,7 @@ class App extends Component {
       <div className='app'>
         <header>
           <NavBar
-          hndleLogout = {this.handleLogout}
+          handleLogout = {this.handleLogout}
           user = {this.state.user}
           />
         </header>
@@ -45,6 +46,13 @@ class App extends Component {
         handleSignupOrLogin={this.handleSignupOrLogin}
         />
       }/>
+        <Route exact path = '/login' render={({history}) =>
+        <LoginPage
+        history = {history}
+        handleSignupOrLogin={this.handleSignupOrLogin}
+        />
+      }/>
+      
         </Switch>
 
       </div>

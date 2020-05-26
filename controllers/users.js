@@ -46,9 +46,7 @@ async function login(req, res) {
             comparePassword(user, req.body.pw, (err, isMatch) => {
                 if (isMatch) {
                     const token = createJWT(user);
-                    console.log(token)
                     res.json({token});
-
                 } else {
                     return res.status(401).json({err: "Bad credentials"});
                 }
@@ -61,9 +59,8 @@ async function login(req, res) {
 
 // Login and authentication functions for controllers
 function createJWT(user) {
-    var id = user.id;
     return jwt.sign(
-      {id},
+      {user},
       SECRET,
       {expiresIn: '24h'}
     );
