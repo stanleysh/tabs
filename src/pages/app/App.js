@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-// import logo from '../../logo.svg';
 import './App.css';
 import userService from '../../utils/userService';
 import NavBar from '../../components/NavBar/NavBar';
 import WelcomePage from '../WelcomePage/WelcomePage';
+import SignupPage from '../SignupPage/SignupPage';
 
 class App extends Component {
   constructor() {
@@ -23,8 +23,6 @@ class App extends Component {
     this.setState({user: userService.getUser()});
   }
 
-  hand
-
   render(){
     return (
       <div className='app'>
@@ -41,7 +39,14 @@ class App extends Component {
           handleLogout = {this.handleLogout}  
           />
         }/>
+        <Route exact path = '/signup' render={({history}) =>
+        <SignupPage
+        history = {history}
+        handleSignupOrLogin={this.handleSignupOrLogin}
+        />
+      }/>
         </Switch>
+
       </div>
     );
     }
