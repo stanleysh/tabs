@@ -6,8 +6,8 @@ const SECRET = process.env.SECRET;
 const SALT_ROUNDS = 12 
 
 const getUsers = (req, res) => {
-    pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
-      if (error) {
+    pool.query('SELECT id, name, email FROM users ORDER BY id ASC', (error, results) => {
+        if (error) {
         throw error
       }
       res.status(200).json(results.rows)
@@ -16,7 +16,7 @@ const getUsers = (req, res) => {
 
 const getUserById = (req, res) => {
     const id = parseInt(req.params.id)
-    pool.query('SELECT * FROM users WHERE id = $1', [id], (error, results) => {
+    pool.query('SELECT id, name, email FROM users WHERE id = $1', [id], (error, results) => {
         if (error) {
             res.status(400).json(error)
         }

@@ -14,7 +14,7 @@ function NavBar(props) {
             </div>
             <div className='account-info btn-group'>
             <button type="button" className="btn btn-info dropdown-toggle nav-buttons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Hi {props.user.name}
+                Hi {props.user.rows[0].name}
             </button>
             <div className="dropdown-menu dropdown-menu-right">
                 <a className="dropdown-item" href="/questions">Your Questions</a>
