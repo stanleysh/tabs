@@ -1,14 +1,19 @@
 .App-header {
   font-size: 20px;
-  background-color: #17a2b8;
+  background-color: #5CDB95;
   color: white;
   display: grid;
-  grid-template-columns: 55% 1fr 1fr;
+  grid-template-columns: 1fr 60% 1fr;
 }
-  
+
+.tag-line {
+  justify-self: center;
+  align-self: center;
+}  
+
 .Logo {
   justify-self: start;
-  margin: 10px 10px 3px 10px;
+  margin-left: 10px;
   align-self: center;
 }
 
@@ -53,7 +58,7 @@
 
 @media only screen and (min-width: 600px) {
   .App-header {
-    grid-template-columns: 70% 1fr 1fr;
+    /* grid-template-columns: 70% 1fr 1fr; */
     font-size: 22px;
   }
 
@@ -64,13 +69,17 @@
 
 @media only screen and (min-width: 768px) {
   .App-header {
-    grid-template-columns: 77% 1fr 1fr;
+    /* grid-template-columns: 77% 1fr 1fr; */
     font-size: 25px;
   }
 }
 
 @media only screen and (min-width: 1024px) {
   .App-header {
-    grid-template-columns: 80% 1fr 1fr
+    grid-template-columns: 1fr 60% 1fr;
   }
+
+  .tag-line {
+    font-size: 40px;
+  }  
 }

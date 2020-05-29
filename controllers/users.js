@@ -1,4 +1,4 @@
-const { pool } = require('../config/config');
+const { pool } = require('../config/database');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const SECRET = process.env.SECRET;
@@ -19,9 +19,9 @@ const getUserById = (req, res) => {
     pool.query('SELECT id, name, email FROM users WHERE id = $1', [id], (error, results) => {
         if (error) {
             res.status(400).json(error)
+        } else {
+            res.status(200).json(results.rows[0])
         }
-        console.log(results)
-        res.status(200).json(results.rows)
     })
 }
 
@@ -57,6 +57,7 @@ async function login(req, res) {
     }
 }
 
+
 // Login and authentication functions for controllers
 function createJWT(user) {
     return jwt.sign(
@@ -77,5 +78,5 @@ module.exports = {
     getUsers,
     getUserById,
     createUser,
-    login
+    login,
 }

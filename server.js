@@ -4,6 +4,7 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cors = require('cors');
+require('./config/database');
 
 const app = express();
 const port = process.env.PORT || 3001;

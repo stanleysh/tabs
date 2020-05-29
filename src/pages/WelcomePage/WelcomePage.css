@@ -1,19 +1,11 @@
-.welcome-bar {
-    margin: 0px auto;
-    display: inline-grid;
-    grid-template-columns: 1fr 40%;
-    text-align: center;
-    grid-gap: 15px;
-}
-
-.welcome-banner {
-    background-color: #b6f0fe;
+.welcome {
+    background-color: #659dbd;
     font-size: 2rem;
-    color: #58757d;
-    padding: 20px 30px;
-    line-height: 2rem;
-    text-align: left;
-    font-weight: bolder;
+    color: #ffffff;
+    padding: 1px;
+    /* line-height: 2rem; */
+    text-align: center;
+    /* font-weight: bolder; */
 }
 
 .welcome-message {
@@ -119,9 +111,9 @@
 }
 
 @media only screen and (min-width: 600px) {
-    .welcome-banner {
+    .welcome {
         font-size: 4rem;
-        line-height: 5rem;
+        /* line-height: 5rem; */
     }
 
     .welcome-message {
@@ -140,10 +132,10 @@
 }
 
 @media only screen and (min-width: 768px) {
-    .welcome-banner {
+    .welcome {
         font-size: 6rem;
-        line-height: 6rem;
-        padding: 40px 50px;
+        /* line-height: 6rem; */
+        /* padding: 40px 50px; */
 
     }
 
@@ -163,10 +155,9 @@
 }
 
 @media only screen and (min-width: 1024px) {
-    .welcome-banner {
-        font-size: 8rem;
-        line-height: 8rem;
-        padding: 40px 5%;
+    .welcome {
+        font-size: 3rem;
+        /* line-height: 2rem; */
     }
 
     .welcome-message {

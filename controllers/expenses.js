@@ -1,0 +1,1 @@
+// CREATE TABLE group_memebers (group_id int4 REFERENCES groups(group_id) ON UPDATE CASCADE ON DELETE CASCADE, member_id int4 REFERENCES users(id) ON UPDATE CASCADE,
