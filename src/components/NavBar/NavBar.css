@@ -3,7 +3,7 @@
   background-color: #5CDB95;
   color: white;
   display: grid;
-  grid-template-columns: 1fr 60% 1fr;
+  grid-template-columns: 60% 1fr;
 }
 
 .tag-line {
@@ -75,11 +75,5 @@
 }
 
 @media only screen and (min-width: 1024px) {
-  .App-header {
-    grid-template-columns: 1fr 60% 1fr;
-  }
 
-  .tag-line {
-    font-size: 40px;
-  }  
 }

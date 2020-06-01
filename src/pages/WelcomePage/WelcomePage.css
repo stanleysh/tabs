@@ -72,17 +72,15 @@
     margin-bottom: 20px;
 }
 
-.welcome-btn:hover {
-    background-color: #58757d;
-    border-color: #58757d;    
-}
-
 .fade-in-1 {
 	opacity: 1;
 	animation-name: fadeInOpacity;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
-	animation-duration: 1s;
+    animation-duration: 1s;
+    text-align: center;
+    color: #05286B;
+    margin-top: 80px;
 }
 
 .fade-in-2 {
@@ -99,6 +97,18 @@
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
 	animation-duration: 3s;
+}
+
+.chart-example {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 80%;
+    margin: auto;
+    margin-top: 60px;
+}
+
+.chart-1 {
+
 }
 
 @keyframes fadeInOpacity {
@@ -172,5 +182,9 @@
         position: absolute;
         top: 105%;
         left: 20%;
+    }
+
+    .fade-in-1 {
+        margin-top: 60px;
     }
 }

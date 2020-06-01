@@ -29,6 +29,9 @@ const useStyles = makeStyles((theme) => ({
     pageLinks: {
         textDecoration: 'none',
         color: 'white',
+        lineHeight: '1.43',
+        letterSpacing: '0.01071em',
+        fontFamily: 'Roboto',
         '&:hover': {
             textDecoration: 'none',
         }
@@ -78,9 +81,6 @@ function NavBar(props) {
     <div className="App-header">
         <div className='Logo'>
             <Link href="/" className={classes.pageLinks}><p><img src={require("./logo/logo_white.png")} alt="logo" width="40px"/> Tabs</p></Link>
-        </div>
-        <div className='tag-line'>
-            <p>A clean simple way to help track your finances</p>
         </div>
         <div className='about-info'>
             <Link href='/about' className={classes.linkButtons}><Button variant="contained" color="primary" className={classes.navButtons}>About Us</Button></Link>
