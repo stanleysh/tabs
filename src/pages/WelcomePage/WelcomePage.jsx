@@ -25,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: 'inherit',
       padding: 0,
     },
+    price: {
+        textAlign: 'right'
+    }
   }));
 
 
@@ -50,7 +53,7 @@ const WelcomePage = (props) => {
             '#003350',
             '#35014F'
         ],
-        data: [-1200, -500, 800, -324, -156]
+        data: [-1200, -450, 800, -320, -180]
         }
     ]
 
@@ -70,7 +73,7 @@ const WelcomePage = (props) => {
                     return data['labels'][tooltipItem[0]['index']];
                 },
                 label: function(tooltipItem, data) {
-                    return "$" + data['datasets'][0]['data'][tooltipItem['index']]
+                    return "$ " + data['datasets'][0]['data'][tooltipItem['index']]
                 },
                 afterLabel: function(tooltipItem, data) {
                     var dataset = data['datasets'][0];
@@ -89,20 +92,21 @@ const WelcomePage = (props) => {
         }
     }
 
-    const exampleListValues = {"Rent": [-1200], "Food/Groceries": [-100, -20, -50, -80], "Luxury": [-120, -240, -40], "Utilities": [-80, -60, -40]}
-
+    const objectExampleListValues = {"Savings": [{"Income": 800}], "Rent": [{"Rent":-1200}], "Food/Groceries": [{"Groceries 3/2/2020":-100}, {"Groceries 3/10/2020":-100}, {"Groceries 3/22/2020":-100}, {"Fast food":-20}, {"Sushi": -50}, {"Fancy Dinner": -80}], "Luxury": [{"Shoes": -120}, {"Computer Keyboard": -140}, {"Video Game":-60}], "Utilities": [{"Phone Bill":-80}, {"Hydro": -60}, {"Internet":-40}]}
 
     var objectExampleList =     
     <List className={classes.root} subheader={<li />}>
-        {Object.keys(exampleListValues).map((sectionId) => (
+        {Object.keys(objectExampleListValues).map((sectionId) => (
             <li key={`section-${sectionId}`} className={classes.listSection}>
                 <ul className={classes.ul}>
                     <ListSubheader>{`${sectionId}`}</ListSubheader>
-                    {exampleListValues[sectionId].map((item) => (
-                    <ListItem key={`item-${sectionId}-${item}`}>
-                        <ListItemText primary={`Item ${item}`} />
-                    </ListItem>
-                    ))}
+                    {objectExampleListValues[sectionId].map((item) => (
+                        Object.keys(item).map((individualExpense) => (
+                        <ListItem key={`item-${sectionId}-${item}`} >
+                            <ListItemText primary={`${individualExpense} `} />
+                            <ListItemText primary={`$ ${item[individualExpense]}`} className={classes.price}/>
+                        </ListItem>
+                        ))))}
                 </ul>
             </li>
         ))}
@@ -133,14 +137,15 @@ const WelcomePage = (props) => {
                         options = {exampleOptions}
                     />
                 </div>
-                <h3>See monthly breakdown of your finances. Filter the chart to see the only the categories you want to see.</h3>
+                <h3>See monthly breakdown of your finances. Click the category names to filter the chart to see the only the categories you want to see. </h3>
             </div>
             <div className="transaction-history">
-                <h3>Butts</h3>
+                <h3>See breakdown of expenses for each specific category.</h3>
                 {objectExampleList}
-            </div>
+            </div> 
             <div className="group-example">
-
+                <img></img>
+                <h3>Create groups with your friends and family to help with splitting the bill.</h3>
             </div>
         </div>
     )
