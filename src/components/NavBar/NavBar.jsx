@@ -83,7 +83,7 @@ function NavBar(props) {
             <Link href="/" className={classes.pageLinks}><p><img src={require("./logo/logo_white.png")} alt="logo" width="40px"/> Tabs</p></Link>
         </div>
         <div className='about-info'>
-            <Link href='/about' className={classes.linkButtons}><Button variant="contained" color="primary" className={classes.navButtons}>About Us</Button></Link>
+            <Link href='/about' className={classes.linkButtons}><Button variant="contained" color="primary" className={classes.navButtons}>About</Button></Link>
             <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} className={classes.navButtons}>
                 Account
             </Button>

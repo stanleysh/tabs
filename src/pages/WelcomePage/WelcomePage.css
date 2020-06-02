@@ -101,14 +101,35 @@
 
 .chart-example {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 80%;
-    margin: auto;
+    grid-template-columns: 35% 35%;
     margin-top: 60px;
+    justify-content: center;
 }
 
-.chart-1 {
+.chart-example h3 {
+    font-weight: normal;
+    color: #05286B;
+    align-self: center;
+    width: 60%;
+    margin: auto;
+}
 
+.transaction-history {
+    display: grid;
+    grid-template-columns: 35% 35%;
+    margin: auto;
+    margin-top: 60px;
+    background-color: #05286B;
+    color: white;
+    padding: 40px 0;
+    justify-content: center;
+}
+
+.transaction-history h3 {
+    font-weight: normal;
+    align-self: center;
+    width: 60%;
+    margin: auto;
 }
 
 @keyframes fadeInOpacity {
@@ -182,6 +203,23 @@
         position: absolute;
         top: 105%;
         left: 20%;
+    }
+
+    .chart-example {
+        grid-template-columns: 40% 40%;
+        margin-top: 60px;
+        padding: 40px 0;
+    }
+
+    .chart-example h3 {
+        width: 60%;
+        margin: auto;
+    }
+
+    .transaction-history {
+        grid-template-columns: 40% 40%;
+        margin-top: 60px;
+        padding: 40px 0;
     }
 
     .fade-in-1 {

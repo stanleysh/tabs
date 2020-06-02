@@ -10,7 +10,7 @@ const AboutPage = () => {
             <h4>This app was created mainly because I am horrible at keeping track of my finances and my refusal to pay for a finance tracking app service. This project was created using React, Material UI, and postgreSQL.</h4>
             <div className="creator">
                 <div>
-                    <img src="https://i.imgur.com/kITwQ11.jpg" id="port-pic" alt="portfolio picture"/>
+                    <img src="https://i.imgur.com/kITwQ11.jpg" id="port-pic" alt="portfolio"/>
 
                 </div>
                 <div className="contact-info">
@@ -20,6 +20,7 @@ const AboutPage = () => {
                         <li><a href=""><img src='https://image.flaticon.com/icons/svg/281/281769.svg' alt='gmail logo' style={{width:'20px'}}/>stnl.sham@gmail.com</a></li>
                         <li><a href="https://www.linkedin.com/in/stanley-sham/"><img src="https://1000logos.net/wp-content/uploads/2017/03/LinkedIn-Logo-768x768.png" alt='linked-in logo' style={{width: '20px'}}/>linkedin</a></li>
                         <li><a href="https://github.com/stanleysh/"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt='github logo' style={{width:'20px'}}/>stanleysh.git</a></li>
+                        <li><a href="https://stanleysh.github.io/stansh/"><img src="https://webstockreview.net/images/clipart-world-world-logo-6.png" alt='github logo' style={{width:'20px'}}/>stanleysh.github.io/stansh/</a></li>
                     </ul>
                 </div>
             </div>
