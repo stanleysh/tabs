@@ -6,34 +6,23 @@
   grid-template-columns: 60% 1fr;
 }
 
-.tag-line {
-  justify-self: center;
-  align-self: center;
-}  
-
 .Logo {
   justify-self: start;
   margin-left: 10px;
   align-self: center;
 }
 
-.name {
-  float: left;
-  align-content: center;
-  margin-right: 10px;
-  align-self: center;
-  margin-top: 6px;
-}
-
-.nav-buttons {
-  font-size: 12px;
-  float: left;
-  align-self: center;
-}
-
 .about-info {
-  justify-self: end;
+  /* justify-self: end; */
   align-self: center;
+  display: grid;
+  grid-template-columns: 60% 1fr 1fr; 
+}
+
+.about-info h4 {
+    margin: 0;
+    justify-self: end;
+    padding-right: 10px;
 }
 
 .account-info {
@@ -75,5 +64,16 @@
 }
 
 @media only screen and (min-width: 1024px) {
-
+    .about-info {
+        /* justify-self: end; */
+        align-self: center;
+        display: grid;
+        grid-template-columns: 65% 1fr 1fr; 
+      }
+      
+      .about-info h4 {
+          margin: 0;
+          justify-self: end;
+          padding-right: 10px;
+      }
 }

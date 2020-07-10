@@ -54,52 +54,46 @@ function NavBar(props) {
         setAnchorEl(null);
     }
 
+    let greeting;
+    let loginLogout;
+    
+
     if (props.user) {
-        return (
+        greeting = 
+        <h4> Hi {props.user.rows[0].name} </h4>
+        loginLogout = 
+        <MenuItem><a className={classes.dropMenuLink} href="/" onClick={props.handleLogout}>Logout</a></MenuItem>
+    } else {
+        greeting = <h4>Hello potential user</h4>
+        loginLogout =         
+        <MenuItem><a className={classes.dropMenuLink} href="/login">Login</a></MenuItem>;
+    }
+        
+    return (
         <div className="App-header">
             <div className='Logo'>
-                <Link to="/" className="logo-holder"><p><img src={require("./logo/logo_white.png")} alt="logo" width="40px"/> Tabs</p></Link>
+                <Link href="/" className={classes.pageLinks}><p><img src={require("./logo/logo_white.png")} alt="logo" width="40px"/> Tabs</p></Link>
             </div>
             <div className='about-info'>
-                <Link to='/about'><Button variant="outlined"className="nav-buttons info">About Us</Button></Link>
+                {greeting}
+                <Link href='/about' className={classes.linkButtons}><Button variant="contained" color="primary" className={classes.navButtons}>About</Button></Link>
+                <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} className={classes.navButtons}>
+                    Account
+                </Button>
+                <Menu
+                    id="simple-menu"
+                    anchorEl={anchorEl}
+                    keepMounted
+                    open={Boolean(anchorEl)}
+                    onClose={handleClose}
+                >
+                    <MenuItem><a className={classes.dropMenuLink} href="/signup">Signup</a></MenuItem>
+                    {loginLogout}
+                </Menu>
             </div>
-            <div className='account-info btn-group'>
-            <button type="button" className="btn btn-info dropdown-toggle nav-buttons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Hi {props.user.rows[0].name}
-            </button>
-            <div className="dropdown-menu dropdown-menu-right">
-                <a className="dropdown-item" href="/questions">Your Questions</a>
-                <div className="dropdown-divider"></div>
-                <Link to='/'><button className="dropdown-item" onClick={props.handleLogout}>Logout</button></Link>
-            </div>
         </div>
-        </div>
-        )
-    } 
-    
-    return (
-    <div className="App-header">
-        <div className='Logo'>
-            <Link href="/" className={classes.pageLinks}><p><img src={require("./logo/logo_white.png")} alt="logo" width="40px"/> Tabs</p></Link>
-        </div>
-        <div className='about-info'>
-            <Link href='/about' className={classes.linkButtons}><Button variant="contained" color="primary" className={classes.navButtons}>About</Button></Link>
-            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} className={classes.navButtons}>
-                Account
-            </Button>
-            <Menu
-        id="simple-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
-        <MenuItem><a className={classes.dropMenuLink} href="/signup">Signup</a></MenuItem>
-        <MenuItem><a className={classes.dropMenuLink} href="/login">Login</a></MenuItem>
-      </Menu>
-        </div>
-    </div>
     )
-};
+}
+// };
 
 export default NavBar;

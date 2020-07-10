@@ -60,7 +60,9 @@ const WelcomePage = (props) => {
         title: {
             display: true,
             text: "March Expenses", 
-            fontSize: 20
+            fontSize: 20,
+            position: 'top'
+            // padding: {top: 10, bottom: 50}, need to figure out what the issue is
         },
         legend: {
             display:true,
@@ -111,18 +113,18 @@ const WelcomePage = (props) => {
         ))}
     </List>
 
-    if (props.user) {
-        return (
-            <>
-                <div className="welcome-banner fade-in-1">
-                    <p>Nice to meet you! Im your personal interview assistant :{")"}</p>
-                </div>
-                <div className="welcome-message fade-in-2">
-                    <p>I'm here to provide you with the most relevant interview questions for the industry of your choice, curated answer scripts and tools to help you prep with confidence!</p>
-                </div> 
-            </>
-        )
-    }
+    // if (props.user) {
+    //     return (
+    //         <>
+    //             <div className="welcome-banner fade-in-1">
+    //                 <p>Nice to meet you! Im your personal interview assistant :{")"}</p>
+    //             </div>
+    //             <div className="welcome-message fade-in-2">
+    //                 <p>I'm here to provide you with the most relevant interview questions for the industry of your choice, curated answer scripts and tools to help you prep with confidence!</p>
+    //             </div> 
+    //         </>
+    //     )
+    // }
 
     return (
         <div>
@@ -142,10 +144,10 @@ const WelcomePage = (props) => {
                 <h2>See a breakdown of expenses for each specific category to see where your money is going each month.</h2>
                 {objectExampleList}
             </div> 
-            <div className="group-example">
+            {/* <div className="group-example">
                 <img alt="working on it"></img>
                 <h2>Create groups with your friends and family to help with splitting the bill.</h2>
-            </div>
+            </div> */}
         </div>
     )
 }
