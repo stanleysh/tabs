@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-// import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import userService from '../../utils/userService';
 import "./SignupForm.css";
 import Avatar from '@material-ui/core/Avatar';

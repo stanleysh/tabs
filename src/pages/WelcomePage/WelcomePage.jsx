@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './WelcomePage.css';
-import {Pie, Doughnut} from 'react-chartjs-2';
+import { Doughnut} from 'react-chartjs-2';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
       maxHeight: 300,
       color: 'black',
       margin: 'auto',
-      maxHeight: 300,
       overflow: 'auto',
     },
     listSection: {
@@ -137,15 +136,15 @@ const WelcomePage = (props) => {
                         options = {exampleOptions}
                     />
                 </div>
-                <h3>See monthly breakdown of your finances. Click the category names to filter the chart to see the only the categories you want to see. </h3>
+                <h2>See monthly breakdown of your finances. Click the category names to filter the chart to see the categories you want to see. </h2>
             </div>
             <div className="transaction-history">
-                <h3>See breakdown of expenses for each specific category.</h3>
+                <h2>See a breakdown of expenses for each specific category to see where your money is going each month.</h2>
                 {objectExampleList}
             </div> 
             <div className="group-example">
-                <img></img>
-                <h3>Create groups with your friends and family to help with splitting the bill.</h3>
+                <img alt="working on it"></img>
+                <h2>Create groups with your friends and family to help with splitting the bill.</h2>
             </div>
         </div>
     )
