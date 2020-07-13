@@ -23,6 +23,7 @@ app.use('/api/tabs', (request, response) => {
 })
 
 app.use('/api/users', require('./routes/api/users'));
+app.use('/api/expenses', require('./routes/api/expenses'));
 
 app.listen(port, function() {
 	console.log(`Express app running on port ${port}`)
