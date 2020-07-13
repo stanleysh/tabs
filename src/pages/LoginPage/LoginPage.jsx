@@ -90,8 +90,8 @@ function LoginPage(props) {
           >
             Sign In
           </Button>
-          <Grid container>
-            <Grid item xs>
+          <Grid container justify="space-between">
+            <Grid item>
               <Link href="/" variant="body2">
                 Cancel
               </Link>

@@ -55,18 +55,26 @@ function NavBar(props) {
     }
 
     let greeting;
-    let loginLogout;
+    let loggedIn;
     
 
     if (props.user) {
         greeting = 
-        <h4> Hi {props.user.rows[0].name} </h4>
-        loginLogout = 
+        <h4> Welcome {props.user.rows[0].name}! </h4>
+        loggedIn = 
+        <>
+            <MenuItem><a className={classes.dropMenuLink} href="/finances">finance</a></MenuItem>
+        <MenuItem><a className={classes.dropMenuLink} href="/profile">Profile</a></MenuItem>
         <MenuItem><a className={classes.dropMenuLink} href="/" onClick={props.handleLogout}>Logout</a></MenuItem>
+        </>
     } else {
-        greeting = <h4>Hello potential user</h4>
-        loginLogout =         
-        <MenuItem><a className={classes.dropMenuLink} href="/login">Login</a></MenuItem>;
+        greeting = <h4>Welcome to the app!</h4>
+        loggedIn = 
+        <>
+        <MenuItem><a className={classes.dropMenuLink} href="/demo">Demo</a></MenuItem>
+        <MenuItem><a className={classes.dropMenuLink} href="/signup">Signup</a></MenuItem>
+        <MenuItem><a className={classes.dropMenuLink} href="/login">Login</a></MenuItem>
+        </>
     }
         
     return (
@@ -78,7 +86,7 @@ function NavBar(props) {
                 {greeting}
                 <Link href='/about' className={classes.linkButtons}><Button variant="contained" color="primary" className={classes.navButtons}>About</Button></Link>
                 <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} className={classes.navButtons}>
-                    Account
+                    Menu
                 </Button>
                 <Menu
                     id="simple-menu"
@@ -87,8 +95,7 @@ function NavBar(props) {
                     open={Boolean(anchorEl)}
                     onClose={handleClose}
                 >
-                    <MenuItem><a className={classes.dropMenuLink} href="/signup">Signup</a></MenuItem>
-                    {loginLogout}
+                    {loggedIn}
                 </Menu>
             </div>
         </div>

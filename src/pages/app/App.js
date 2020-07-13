@@ -8,6 +8,7 @@ import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import AboutPage from '../AboutPage/AboutPage';
 import HomePage from '../HomePage/HomePage';
+import DemoPage from '../DemoPage/DemoPage';
 
 class App extends Component {
   constructor() {
@@ -61,6 +62,9 @@ class App extends Component {
           <HomePage
           user = {this.state.user}
           />
+        }/>
+        <Route exact path = '/demo' render={() => 
+        <DemoPage/>
         }/>
         </Switch>
 
