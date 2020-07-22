@@ -9,6 +9,8 @@ const expensesCtrl = require ('../../controllers/expenses');
 // for testing only, remember to delete later !!!
 router.get('/', expensesCtrl.getExpenses);
 router.get('/:id', expensesCtrl.getUserExpenses);
+router.get('/monthly/', expensesCtrl.getDemoMonthlyCost)
+router.get('/monthly/:id', expensesCtrl.getMonthlyCost);
 router.post('/:id/expense', expensesCtrl.createExpense);
 
 

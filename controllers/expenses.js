@@ -12,9 +12,12 @@ const getExpenses = (req, res) => {
     })
 }
 
+// pool.query('SELECT categories.category_name, expenses.name, expenses.amount FROM expenses, categories WHERE expenses.user_id = $1 AND  categories.user_id = $1', [id], (error, results) => {
+
+
 const getUserExpenses = (req, res) => {
     const id = parseInt(req.params.id)
-    pool.query('SELECT categories.category_name, expenses.name, expenses.amount FROM expenses, categories WHERE expenses.user_id = $1 AND  categories.user_id = $1', [id], (error, results) => {
+    pool.query('SELECT category_name, name, amount, expense_date::date FROM expenses INNER JOIN categories ON categories.id = expenses.category_id WHERE expenses.user_id = $1', [id], (error, results) => {
         if (error) {
             res.status(400).json(error)
         } else {
@@ -29,14 +32,38 @@ const createExpense = (req, res) => {
         if (error) {
             console.log(error)
         } else {
-            res.json({msg: 'Question created'});
+            res.json({msg: 'Expense created'});
         }
+    })
+}
+
+const getMonthlyCost = (req, res) => {
+    if (req.params.id) {
+        var user_id = parseInt(req.params.id)
+    } 
+    pool.query('SELECT SUM(amount) FROM expenses WHERE user_id = $1', [user_id], (error, result) =>{
+        if (error) {
+            console.log(error)
+        } 
+        res.json(result.rows[0])
+    })
+}
+
+const getDemoMonthlyCost = (req, res) => {
+    const user_id = 1
+    pool.query('SELECT SUM(amount) AS monthly_cost FROM expenses WHERE user_id = $1', [user_id], (error, result) =>{
+        if (error) {
+            console.log(error)
+        } 
+        res.json(result.rows[0])
     })
 }
 
 module.exports = {
     getExpenses,
     getUserExpenses,
-    createExpense
+    createExpense,
+    getMonthlyCost,
+    getDemoMonthlyCost
 }
 

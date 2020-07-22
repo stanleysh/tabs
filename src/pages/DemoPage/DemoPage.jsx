@@ -3,7 +3,7 @@ import './DemoPage.css';
 
 const DemoPage = (props) => (
     <div className = 'month-preview'>
-        <h1>Month preview goes here</h1>
+        <h1>July 2020</h1>
         <h2>First Chart (pie with thing)</h2>
         <h2>Second chart (month income)</h2>
     </div>
