@@ -23,24 +23,20 @@ const getUserExpenses = (req, res) => {
     })
 }
 
-const createUser = (req, res) => {
-    bcrypt.hash(req.body.pw, SALT_ROUNDS)
-    .then((hash) => {
-        pool.query('INSERT INTO users (name, email, pw) VALUES ($1, $2, $3) RETURNING *', [req.body.name, req.body.email, hash], (error, newUser) => {
-            if (error) {
-                console.log(error)
-            }
-            res.json({token: createJWT(newUser)})
-        })
-    }) 
-    .catch((err) => {
-        return res.status(401).json(err)
+const createExpense = (req, res) => {
+    const user_id = parseInt(req.params.id)
+    pool.query('INSERT INTO expenses (user_id, categories_id, name, amount, expense_date) VALUES ($1, $2, $3, $4, $5)', [user_id, req.body.category_id, req.body.name, req.body.amount, req.body.expense_date], (error, newExpense) => {
+        if (error) {
+            console.log(error)
+        } else {
+            res.json({msg: 'Question created'});
+        }
     })
 }
 
 module.exports = {
     getExpenses,
-    getUserExpenses
+    getUserExpenses,
+    createExpense
 }
 
-//
