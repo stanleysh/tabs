@@ -40,7 +40,9 @@ const createExpense = (req, res) => {
 const getMonthlyCost = (req, res) => {
     if (req.params.id) {
         var user_id = parseInt(req.params.id)
-    } 
+    } else {
+        var user_id = 1
+    }
     pool.query('SELECT(SELECT SUM(amount) FROM expenses WHERE user_id = $1) AS total_amount, (SELECT SUM(amount) FROM expenses WHERE user_id = $1 AND expense_date >= date_trunc(\'month\', CURRENT_DATE)) AS current_amount', [user_id], (error, result) =>{
         if (error) {
             console.log(error)
@@ -50,7 +52,6 @@ const getMonthlyCost = (req, res) => {
 }
 
 const getDemoMonth = (req, res) => {
-
     pool.query('SELECT(SELECT SUM(amount) FROM expenses WHERE user_id = 1) AS total_amount, (SELECT SUM(amount) FROM expenses WHERE user_id = 1 AND expense_date >= date_trunc(\'month\', CURRENT_DATE)) AS current_amount', (error, result) =>{
         if (error) {
             console.log(error)

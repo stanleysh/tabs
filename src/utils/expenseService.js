@@ -15,13 +15,14 @@ function getMonthlyCost (apiPath) {
     const options = {
         method: 'GET',
         headers: {
-            'Content-type': 'application/json',
-            'Authorization': 'Bearer ' + tokenService.getToken()
+            'Content-type': 'application/json'
         }
     }
     return fetch(apiPath, options).then(res => res.json());
 }
 
 export default {
-    getUserExpenses
+    getUserExpenses,
+    getMonthlyCost,
+    
 }
