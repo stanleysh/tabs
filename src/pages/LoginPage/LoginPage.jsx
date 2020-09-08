@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 import './LoginPage.css';
 import userService from '../../utils/userService';
 import { connect } from 'react-redux';
-import { loginUser } from '../../Redux/user'
+import { loginUser } from '../../redux/user'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';

@@ -21,7 +21,7 @@ export const signupUser = () => ({
     payload: userService.getUser()
 })
 
-function userReducer(state = userService.getUser(), action) {
+function userReducer(state = {}, action) {
     switch(action.type) {
         case LOGIN_USER:
             return action.payload;

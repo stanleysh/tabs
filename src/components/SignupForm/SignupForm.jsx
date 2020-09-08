@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import userService from '../../utils/userService';
+import { connect } from 'react-redux';
+import { signupUser } from '../../redux/user';
 import "./SignupForm.css";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -18,49 +20,68 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function formReducer(info, action) {
+    switch (action.type) {
+        case 'UPDATE_INPUT':
+            return {
+                ...info,
+                [action.payload.name]: action.payload.value
+            };
+        default:
+            throw new Error(`Unsupported action ${action.type}`);
+    }
+}
 
 
 function SignupForm(props) {
-    const [state, setState] = useState({name: '', email: '', pw: '', pwConf: ''})
+    const initialState = {
+        name: '', 
+        email: '', 
+        pw: '', 
+        pwConf: ''
+    }
 
-  let handleChange = (e) => {
-    props.updateMessage('');
-    const {name, value} = e.target;
-    setState(prevState => ({...prevState, [name]: value}));
-  }
+    const [info, setInfo] = useReducer(formReducer, initialState);
 
-  let handleSubmit = async (e) => {
+    function handleChange(e) {
+        setInfo({
+            type: 'UPDATE_INPUT',
+            payload: e.target
+        })
+    }
+
+let handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await userService.signup(state);
-      props.handleSignupOrLogin();
-      props.history.push('/');
+        await userService.signup(info);
+        props.handleSignupOrLogin();
+        props.history.push('/');
     } catch (err) {
-      // Invalid user data
-      props.updateMessage(err.message);
+        console.log(err)
+        props.updateMessage(err.message);
     }
-  }
+}
 
-  const isFormInvalid = () => {
-    return !(state.name && state.email && state.pwConf && state.pw === state.pwConf);
-  }
+const isFormInvalid = () => {
+    return !(info.name && info.email && info.pwConf && info.pw === info.pwConf);
+}
 
-  const classes = useStyles();
+const classes = useStyles();
 
     return (
-      <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className='paper'>
+    <Container component="main" maxWidth="xs">
+    <CssBaseline />
+    <div className='paper'>
         <Avatar className='avatar'>
-          <LockOutlinedIcon />
+        <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign up
+        Sign up
         </Typography>
         <form className='form' noValidate onSubmit={handleSubmit}>
-          <Grid container spacing={2}>
+        <Grid container spacing={2}>
             <Grid item xs={12}>
-              <TextField
+            <TextField
                 autoComplete="name"
                 name="name"
                 variant="outlined"
@@ -70,10 +91,10 @@ function SignupForm(props) {
                 label="Name"
                 autoFocus
                 onChange={handleChange}
-              />
+            />
             </Grid>
             <Grid item xs={12}>
-              <TextField
+            <TextField
                 variant="outlined"
                 required
                 fullWidth
@@ -83,10 +104,10 @@ function SignupForm(props) {
                 autoComplete="email"
                 onChange={handleChange}
 
-              />
+            />
             </Grid>
             <Grid item xs={12}>
-              <TextField
+            <TextField
                 variant="outlined"
                 required
                 fullWidth
@@ -96,10 +117,10 @@ function SignupForm(props) {
                 id="pw"
                 autoComplete="current-password"
                 onChange={handleChange}
-              />
+            />
             </Grid>
             <Grid item xs={12}>
-              <TextField
+            <TextField
                 variant="outlined"
                 required
                 fullWidth
@@ -108,35 +129,39 @@ function SignupForm(props) {
                 type="password"
                 id="pwConf"
                 onChange={handleChange}
-              />
+            />
             </Grid>
-          </Grid>
-          <Button
+        </Grid>
+        <Button
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             disabled={isFormInvalid()}
             className={classes.submit}
-          >
+        >
             Sign Up
-          </Button>
-          <Grid container justify="space-between">
+        </Button>
+        <Grid container justify="space-between">
             <Grid item>
-              <Link href='/' variant="body2">
+            <Link href='/' variant="body2">
                 Cancel
-              </Link>
+            </Link>
             </Grid>
             <Grid item>
-              <Link href="/login" variant="body2">
+            <Link href="/login" variant="body2">
                 Already have an account? Sign in
-              </Link>
+            </Link>
             </Grid>
-          </Grid>
+        </Grid>
         </form>
-      </div>
+    </div>
     </Container>
     );
 }
 
-export default SignupForm;
+const mapDispatchToProps = (dispatch) => ({
+    signupUser: () => dispatch(signupUser())
+});
+
+export default connect(null, mapDispatchToProps) (SignupForm);
