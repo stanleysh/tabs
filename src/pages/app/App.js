@@ -63,7 +63,7 @@ class App extends Component {
           user = {this.state.user}
           />
         }/>
-        <Route exact path = '/demo' render={() => 
+        <Route exact path = '/demo' render={({history}) => 
         <DemoPage/>
         }/>
         </Switch>

@@ -1,26 +1,28 @@
-import React, {Component} from 'react';
+import React, {Component, useState, useEffect} from 'react';
 import './DemoPage.css';
 import expenseService from '../../utils/expenseService';
 
-class DemoPage extends Component {
-    state = {
-        headers: {}
-    }
+function DemoPage({history}) {
+    const [totalAmount, setTotalAmount] = useState();
+    const [currentAmount, setCurrentAmount] = useState();
 
-    async componentDidMount() {
-        const amount = await expenseService.getMonthlyCost('/api/expenses');
-        this.setState({headers: amount})
-    }
+    useEffect(() => {
+        // when searching up specific users use the following below:
+        // const amount = await expenseService.getMonthlyCost('/api/expenses', {user: 2})
+        async function getCost() { 
+            const result = await expenseService.getMonthlyCost('/api/expenses')
+            setTotalAmount(result.total_amount)
+        };
+        getCost();
+    }, [])
 
-    render() {
-        return (
-            <div className = 'month-preview'>
-                <h1>July 2020</h1>
-                <h2>First Chart {this.state.headers['total_amount']}</h2>
-                <h2>Second chart {this.state.headers['current_amount']}</h2>
-            </div>
-        )
-    }
+    return (
+        <div className = 'month-preview'>
+            <h1>Quick View</h1>
+            <h2>First Chart {totalAmount}</h2>
+            {/* <h2>Second chart {currentAmount}</h2> */}
+        </div>
+    )
 };
 
 export default DemoPage;
