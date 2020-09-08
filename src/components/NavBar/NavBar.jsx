@@ -63,7 +63,7 @@ function NavBar(props) {
         <h4> Welcome {props.user.rows[0].name}! </h4>
         loggedIn = 
         <>
-            <MenuItem><a className={classes.dropMenuLink} href="/finances">finance</a></MenuItem>
+            <MenuItem><a className={classes.dropMenuLink} href="/finances">Finance</a></MenuItem>
         <MenuItem><a className={classes.dropMenuLink} href="/profile">Profile</a></MenuItem>
         <MenuItem><a className={classes.dropMenuLink} href="/" onClick={props.handleLogout}>Logout</a></MenuItem>
         </>
