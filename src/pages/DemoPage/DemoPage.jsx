@@ -8,7 +8,7 @@ class DemoPage extends Component {
     }
 
     async componentDidMount() {
-        const amount = await expenseService.getMonthlyCost('/api/expenses/demo');
+        const amount = await expenseService.getMonthlyCost('/api/expenses');
         this.setState({headers: amount})
     }
 
