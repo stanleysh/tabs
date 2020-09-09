@@ -27,7 +27,7 @@ function DemoPage({history}) {
 
         getCost();
         getCurrentDate();
-    }, [date])
+    }, [])
 
     return (
         <div className = 'month-preview'>
