@@ -45,6 +45,10 @@ function getMonthlyCost(url, data = {user: undefined}) {
     return requestHelper('GET', path)
 }
 
+function getDemoMonthlyCost(url, data = {user: 'demo'}) {
+    const path = `${url}/${data.user}`
+}
+
 
 export default {
     getUserExpenses,
