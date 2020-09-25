@@ -5,33 +5,33 @@ const LOGOUT_USER = 'LOGOUT_USER';
 const SIGNUP_USER = 'SIGNUP_USER';
 
 export const loginUser = () => ({
-        type: LOGIN_USER,
-        payload: userService.getUser()
-})
+  type: LOGIN_USER,
+  payload: userService.getUser(),
+});
 
 export const logoutUser = () => {
-    userService.logout();
-    return {
-        type: LOGOUT_USER
-    }
-}
+  userService.logout();
+  return {
+    type: LOGOUT_USER,
+  };
+};
 
 export const signupUser = () => ({
-    type: SIGNUP_USER,
-    payload: userService.getUser()
-})
+  type: SIGNUP_USER,
+  payload: userService.getUser(),
+});
 
 function userReducer(state = {}, action) {
-    switch(action.type) {
-        case LOGIN_USER:
-            return action.payload;
-        case LOGOUT_USER:
-            return null;
-        case SIGNUP_USER:
-            return action.payload;
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case LOGIN_USER:
+      return action.payload;
+    case LOGOUT_USER:
+      return null;
+    case SIGNUP_USER:
+      return action.payload;
+    default:
+      return state;
+  }
 }
 
-export default userReducer
+export default userReducer;

@@ -16,7 +16,7 @@ const getExpenses = (req, res) => {
 // pool.query('SELECT categories.category_name, expenses.name, expenses.amount FROM expenses, categories WHERE expenses.user_id = $1 AND  categories.user_id = $1', [id], (error, results) => {
 
 const getUserExpenses = (req, res) => {
-  const id = parseInt(req.params.id)
+  const id = parseInt(req.params.id);
   pool.query('SELECT category_name, name, amount, expense_date::date FROM expenses INNER JOIN categories ON categories.id = expenses.category_id WHERE expenses.user_id = $1', [id], (error, results) => {
     if (error) {
       res.status(400).json(error);
@@ -27,12 +27,12 @@ const getUserExpenses = (req, res) => {
 };
 
 const createExpense = (req, res) => {
-  const user_id = parseInt(req.params.id)
+  const user_id = parseInt(req.params.id);
   pool.query('INSERT INTO expenses (user_id, categories_id, name, amount, expense_date) VALUES ($1, $2, $3, $4, $5)', [user_id, req.body.category_id, req.body.name, req.body.amount, req.body.expense_date], (error, newExpense) => {
     if (error) {
       console.log(error);
     } else {
-      res.json({msg: 'Expense created'});
+      res.json({ msg: 'Expense created' });
     }
   });
 };
@@ -43,7 +43,7 @@ const getMonthlyAndTotal = (req, res) => {
   } else {
     const user_id = 1;
   }
-  pool.query('SELECT(SELECT SUM(amount) FROM expenses WHERE user_id = $1) AS total_amount, (SELECT SUM(amount) FROM expenses WHERE user_id = $1 AND date_trunc(\'month\', expense_date) = date_trunc(\'month\', CURRENT_DATE) AND date_trunc(\'year\', expense_date) = date_trunc(\'year\', CURRENT_DATE)) AS current_amount', [user_id], (error, result) =>{
+  pool.query('SELECT(SELECT SUM(amount) FROM expenses WHERE user_id = $1) AS total_amount, (SELECT SUM(amount) FROM expenses WHERE user_id = $1 AND date_trunc(\'month\', expense_date) = date_trunc(\'month\', CURRENT_DATE) AND date_trunc(\'year\', expense_date) = date_trunc(\'year\', CURRENT_DATE)) AS current_amount', [user_id], (error, result) => {
     if (error) {
       console.log(error);
     }
@@ -52,8 +52,8 @@ const getMonthlyAndTotal = (req, res) => {
 };
 
 const getDemoMonth = (req, res) => {
-    // pool.query('SELECT(SELECT SUM(amount) FROM expenses WHERE user_id = 1) AS total_amount, (SELECT SUM(amount) FROM expenses WHERE user_id = 1 AND expense_date >= date_trunc(\'month\', CURRENT_DATE)) AS current_amount', (error, result) =>{
-  pool.query('SELECT(SELECT SUM(amount) FROM expenses WHERE user_id = 1) AS total_amount, (SELECT SUM(amount) FROM expenses WHERE user_id = 1 AND EXTRACT(MONTH FROM expense_date) = 7) AS current_amount', (error, result) =>{
+  // pool.query('SELECT(SELECT SUM(amount) FROM expenses WHERE user_id = 1) AS total_amount, (SELECT SUM(amount) FROM expenses WHERE user_id = 1 AND expense_date >= date_trunc(\'month\', CURRENT_DATE)) AS current_amount', (error, result) =>{
+  pool.query('SELECT(SELECT SUM(amount) FROM expenses WHERE user_id = 1) AS total_amount, (SELECT SUM(amount) FROM expenses WHERE user_id = 1 AND EXTRACT(MONTH FROM expense_date) = 7) AS current_amount', (error, result) => {
     if (error) {
       console.log(error);
     }

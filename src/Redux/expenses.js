@@ -1,3 +1,3 @@
-import expenseService from '../utils/expenseService'
+import expenseService from '../utils/expenseService';
 
-const SET_EXPENSES = 'SET_EXPENSES'
+const SET_EXPENSES = 'SET_EXPENSES';
