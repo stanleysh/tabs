@@ -14,8 +14,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      user: userService.getUser()
-    }
+      user: userService.getUser(),
+    };
   }
 
   handleLogout = () => {
@@ -24,53 +24,73 @@ class App extends Component {
   }
 
   handleSignupOrLogin = () => {
-    this.setState({user: userService.getUser()});
+    this.setState({ user: userService.getUser() });
   }
 
-  render(){
+  render() {
     return (
-      <div className='app'>
+      <div className="app">
         <header>
           <NavBar
-          handleLogout = {this.handleLogout}
-          user = {this.state.user}
+            handleLogout={this.handleLogout}
+            user={this.state.user}
           />
         </header>
         <Switch>
-          <Route exact path = '/' render={() =>
-          <WelcomePage
-          user = {this.state.user}
-          handleLogout = {this.handleLogout}  
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <WelcomePage
+                user={this.state.user}
+                handleLogout={this.handleLogout}
+              />
+        )}
           />
-        }/>
-          <Route exact path = '/about' render={() => 
-          <AboutPage/>  
-        }/>
-          <Route exact path = '/signup' render={({history}) =>
-          <SignupPage
-          history = {history}
-          handleSignupOrLogin={this.handleSignupOrLogin}
+          <Route
+            exact
+            path="/about"
+            render={() => <AboutPage />}
           />
-        }/>
-          <Route exact path = '/login' render={({history}) =>
-          <LoginPage
-          history = {history}
-          handleSignupOrLogin={this.handleSignupOrLogin}
+          <Route
+            exact
+            path="/signup"
+            render={({ history }) => (
+              <SignupPage
+                history={history}
+                handleSignupOrLogin={this.handleSignupOrLogin}
+              />
+        )}
           />
-        }/>
-          <Route exact path = '/home' render={() => 
-          <HomePage
-          user = {this.state.user}
+          <Route
+            exact
+            path="/login"
+            render={({ history }) => (
+              <LoginPage
+                history={history}
+                handleSignupOrLogin={this.handleSignupOrLogin}
+              />
+        )}
           />
-        }/>
-        <Route exact path = '/demo' render={({history}) => 
-        <DemoPage/>
-        }/>
+          <Route
+            exact
+            path="/home"
+            render={() => (
+              <HomePage
+                user={this.state.user}
+              />
+        )}
+          />
+          <Route
+            exact
+            path="/demo"
+            render={({ history }) => <DemoPage />}
+          />
         </Switch>
 
       </div>
     );
-    }
+  }
 }
 
 export default App;
